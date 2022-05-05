@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .greeting{
+        padding-top: 40px;
+        color: #8C55AA;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: bold;
+        text-align: center;
+    }
+    input[type=text], select {
+      padding: 12px 20px;
+      margin-bottom: 10px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 5em;
+      box-sizing: border-box;
+    }
+    .label {
+        color: rgb(38, 50, 56);
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 1px;
+        background: rgba(136, 126, 126, 0.04);
+        width: 150px;
+        margin-bottom: 5px;
+        padding: 10px 20px;
+        border: 0;
+        border-radius: 20px;
+        box-sizing: border-box;
+        border: 2px solid rgba(0, 0, 0, 0.02);
+        text-align: center;
+        font-family: 'Ubuntu', sans-serif;
+    }
+    .margin {
+        margin-top: 45px;
+    }
+
+</style>
+
+<h1 class="greeting">Hello, {{ user.username|default:'Guest' }}!</h1>
+<p align="center">Want to add new labels?</p>
+
+<div align="center">
+    <form action="{% url 'crud' %}" method="post" >
+        {% csrf_token %}
+
+        <input type="text" name="new-label" id="new-label" placeholder="Type name..." required>
+        <button type="submit" class = submit>Add Label</button>
+    </form>
+
+    <p>Your labels:</p>
+
+    {% for i in labels %}
+    <p class="label">{{ i.title }}</p>
+
+    <form action="{% url 'update_label' i.id %}" method="post" >
+        {% csrf_token %}
+        <div >
+            <input type="text" name="label_{{ i.id }}" id="" value="{{ i.title }}" required
+                   size="40">
+        </div>
+        <div >
+            <button type="button" data-dismiss="modal">Close</button>
+            <button type="submit" id="edit-label-submit">Change</button>
+        </div>
+        <a href="{% url 'delete_label' i.id %}" id="delete-label" >Delete</a>
+    </form>
+
+    {% endfor %}
+
+    <p class="margin"><a href="{% url 'home' %}" class="submit" >Back</a></p>
+</div>
+
+{% endblock %}

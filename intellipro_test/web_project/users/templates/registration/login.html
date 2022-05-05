@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+    input[type=text], select {
+      padding: 6px 8px;
+      margin-left: 6px;
+      margin-bottom: 10px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 5em;
+      box-sizing: border-box;
+    }
+    input[type=password] {
+      padding: 6px 10px;
+      margin-left: 6px;
+      margin-bottom: 10px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 5em;
+      box-sizing: border-box;
+    }
+        .submit {
+      cursor: pointer;
+        border-radius: 5em;
+        color: #fff;
+        background: linear-gradient(to right, #9C27B0, #E040FB);
+        border: 0;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        font-family: 'Ubuntu', sans-serif;
+        margin: auto;
+        font-size: 13px;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+    }
+    .margin{
+        margin-top: 30px;
+    }
+    </style>
+
+    <p class="sign" align="center">Login</p>
+
+    <div align="center">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Login" class="submit">
+    </form>
+
+        <p class="margin"><a href="{% url 'register' %}" class="submit">Register</a></p>
+    </div>
+
+{% endblock %}

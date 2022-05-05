@@ -1,0 +1,35 @@
+{% load static %}
+<html>
+  <head>
+        <link rel="stylesheet" href="{% static '/css/style.css' %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>home</title>
+  </head>
+  <style>
+
+    body {
+        background-color: #F3EBF6;
+        font-family: 'Ubuntu', sans-serif;
+
+
+    .sign {
+        padding-top: 40px;
+        color: #8C55AA;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: bold;
+        font-size: 23px;
+    }
+
+  </style>
+
+  <body>
+
+    {% block content %}
+    {% endblock %}
+    <p class="sign" align="center"> Welcome to the site</p>
+
+
+  </body>
+</html>

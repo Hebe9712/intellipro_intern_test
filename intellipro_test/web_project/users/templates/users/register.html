@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+input[type=text], select {
+      padding: 6px 8px;
+      margin-left: 6px;
+      margin-bottom: 10px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 5em;
+      box-sizing: border-box;
+    }
+    input[type=password] {
+      padding: 6px 10px;
+      margin-left: 6px;
+      margin-bottom: 10px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 5em;
+      box-sizing: border-box;
+    }
+    .margin{
+        margin-top: 70px;
+    }
+</style>
+
+<h2 class="sign" align="center">Register</h2>
+
+<div align="center">
+<form method="post">
+    {% csrf_token %}
+    {{form}}
+    <p><input type="submit" value="Register" class="submit"></p>
+</form>
+    <p class="margin"><a href="{% url 'home' %}" class="submit">Back</a></p>
+</div>
+
+{% endblock %}
